@@ -54,7 +54,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 // *****************************************************************************
 
 #include "app.h"
-
+#include "accel.h"
 
 // *****************************************************************************
 // *****************************************************************************
@@ -407,10 +407,15 @@ void APP_Tasks ( void )
 
                 if(movement_length > 50)
                 {
+                    short accels[3]; // accelerations for the 3 axes
+                    acc_read_register(OUT_X_L_A, (unsigned char *) accels, 6);
+
                     appData.mouseButton[0] = MOUSE_BUTTON_STATE_RELEASED;
                     appData.mouseButton[1] = MOUSE_BUTTON_STATE_RELEASED;
                     appData.xCoordinate =(int8_t)dir_table[vector & 0x07] ;
                     appData.yCoordinate =(int8_t)dir_table[(vector+2) & 0x07];
+                    //appData.xCoordinate =(int8_t)(accels[0] * 30/3200);
+                    //appData.yCoordinate =(int8_t)(accels[1] * 30/3200);
                     vector ++;
                     movement_length = 0;
                 }

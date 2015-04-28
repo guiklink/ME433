@@ -51,7 +51,6 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include "system_definitions.h"
 #include "app.h"
 
-
 // ****************************************************************************
 // ****************************************************************************
 // Section: Configuration Bits
@@ -456,7 +455,7 @@ void SYS_Initialize ( void* data )
 
     /* Enable Global Interrupts */
     SYS_INT_Enable();
-
+    
 
     /* Initialize the Application */
     APP_Initialize();

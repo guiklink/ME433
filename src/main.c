@@ -72,6 +72,12 @@ int main ( void )
     /* Initialize all MPLAB Harmony modules, including application(s). */
     SYS_Initialize ( NULL );
 
+    /* Initialize Accel Registers */
+    acc_setup();
+
+    /* Initialize Display Registers */
+    //display_init();
+
     while ( true )
     {
         /* Maintain state machines of all polled MPLAB Harmony modules. */

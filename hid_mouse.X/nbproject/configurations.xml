@@ -4,6 +4,9 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <logicalFolder name="f1" displayName="accel" projectFiles="true">
+        <itemPath>../src/accel.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="app" displayName="app" projectFiles="true">
         <logicalFolder name="system_config"
                        displayName="system_config"
@@ -85,6 +88,10 @@
                        projectFiles="true">
           <itemPath>../../../../../../bsp/pic32mz_ec_sk/bsp_config.h</itemPath>
         </logicalFolder>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="display" projectFiles="true">
+        <itemPath>../src/i2c_display.h</itemPath>
+        <itemPath>../src/i2c_master_int.h</itemPath>
       </logicalFolder>
       <logicalFolder name="framework" displayName="framework" projectFiles="true">
         <logicalFolder name="driver" displayName="driver" projectFiles="true">
@@ -222,6 +229,9 @@
         <itemPath>../src/app.c</itemPath>
         <itemPath>../src/main.c</itemPath>
         <itemPath>../src/mouse.c</itemPath>
+        <itemPath>../src/spi_accel.c</itemPath>
+        <itemPath>../src/i2c_display.c</itemPath>
+        <itemPath>../src/i2c_master_int.c</itemPath>
       </logicalFolder>
       <logicalFolder name="bsp" displayName="bsp" projectFiles="true">
         <logicalFolder name="pic32mx460_pim+e16"
@@ -1139,6 +1149,7 @@
         <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
         <property key="UART1" value="true"/>
         <property key="UART2" value="true"/>
+        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>

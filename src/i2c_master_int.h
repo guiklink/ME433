@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   i2c_master_int.h
  * Author: klink
  *

@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   i2c_display.h
  * Author: klink
  *

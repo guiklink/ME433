@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   accel.h
  * Author: klink
  *
