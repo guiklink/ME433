@@ -58,7 +58,8 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include <stddef.h>                     // Defines NULL
 #include <stdbool.h>                    // Defines true
 #include <stdlib.h>                     // Defines EXIT_FAILURE
-#include "system/common/sys_module.h"   // SYS function prototypes
+#include "system/common/sys_module.h"
+#include "i2c_display.h"   // SYS function prototypes
 
 
 // *****************************************************************************
@@ -72,11 +73,7 @@ int main ( void )
     /* Initialize all MPLAB Harmony modules, including application(s). */
     SYS_Initialize ( NULL );
 
-    /* Initialize Accel Registers */
-    acc_setup();
 
-    /* Initialize Display Registers */
-    //display_init();
 
     while ( true )
     {

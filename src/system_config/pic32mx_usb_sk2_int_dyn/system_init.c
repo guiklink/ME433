@@ -89,8 +89,8 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #pragma config USERID = 0       // some 16bit userid, doesn't matter what
 #pragma config PMDL1WAY = ON    // allow only one reconfiguration
 #pragma config IOL1WAY = ON     // allow only one reconfiguration
-#pragma config FUSBIDIO = ON    // USB pins controlled by USB module
-#pragma config FVBUSONIO = ON   // controlled by USB module
+#pragma config FUSBIDIO = OFF    // USB pins controlled by USB module
+#pragma config FVBUSONIO = OFF   // controlled by USB module
 
 
 // *****************************************************************************
@@ -455,7 +455,12 @@ void SYS_Initialize ( void* data )
 
     /* Enable Global Interrupts */
     SYS_INT_Enable();
-    
+
+    /* Initialize Accel Registers */
+    acc_setup();
+
+    /* Initialize Display Registers */
+    display_init();
 
     /* Initialize the Application */
     APP_Initialize();

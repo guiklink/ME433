@@ -55,6 +55,11 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 
 #include "app.h"
 #include "accel.h"
+#include "i2c_display.h"
+
+#define SCREEN_X 1920
+#define SCREEN_Y 1080
+#define ACCEL_SCALE 3/3200
 
 // *****************************************************************************
 // *****************************************************************************
@@ -330,6 +335,7 @@ void APP_Initialize ( void )
     appData.isMouseReportSendBusy = false;
     appData.isSwitchPressed = false;
     appData.ignoreSwitchPress = false;
+
 }
 
 
@@ -407,15 +413,24 @@ void APP_Tasks ( void )
 
                 if(movement_length > 50)
                 {
+                    char msg[30];
                     short accels[3]; // accelerations for the 3 axes
                     acc_read_register(OUT_X_L_A, (unsigned char *) accels, 6);
 
+                    // Print accel data on display
+                    display_clear();
+                    //sprintf(msg, "x:%d, y:%d, z:%d ",accels[0], accels[1], accels[2]);
+                    sprintf(msg, "x:%d, y:%d, z:%d ",accels[0]*ACCEL_SCALE, accels[1]*ACCEL_SCALE, accels[2]*ACCEL_SCALE);
+                    display_write_string(msg, 5, 5);
+                    display_draw();
+
                     appData.mouseButton[0] = MOUSE_BUTTON_STATE_RELEASED;
                     appData.mouseButton[1] = MOUSE_BUTTON_STATE_RELEASED;
-                    appData.xCoordinate =(int8_t)dir_table[vector & 0x07] ;
-                    appData.yCoordinate =(int8_t)dir_table[(vector+2) & 0x07];
-                    //appData.xCoordinate =(int8_t)(accels[0] * 30/3200);
-                    //appData.yCoordinate =(int8_t)(accels[1] * 30/3200);
+                    //appData.xCoordinate =(int8_t)dir_table[vector & 0x07] ;
+                    //appData.yCoordinate =(int8_t)dir_table[(vector+2) & 0x07];
+
+                    appData.xCoordinate = -1*accels[1]*ACCEL_SCALE;
+                    appData.yCoordinate = accels[0]*ACCEL_SCALE;
                     vector ++;
                     movement_length = 0;
                 }
@@ -510,7 +525,7 @@ void APP_Tasks ( void )
         }
     }
 }
- 
+
 
 /*******************************************************************************
  End of File

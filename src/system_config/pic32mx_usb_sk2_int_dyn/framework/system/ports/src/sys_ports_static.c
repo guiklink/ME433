@@ -62,8 +62,10 @@ void SYS_PORTS_Initialize(void)
     
     
     /* PORT B Initialization */
-    PLIB_PORTS_DirectionOutputSet( PORTS_ID_0, PORT_CHANNEL_B,  SYS_PORT_D_TRIS ^ 0xFFFF);
-    PLIB_PORTS_OpenDrainEnable(PORTS_ID_0, PORT_CHANNEL_B, SYS_PORT_D_ODC);
+    //PLIB_PORTS_DirectionOutputSet( PORTS_ID_0, PORT_CHANNEL_B,  SYS_PORT_D_TRIS ^ 0xFFFF);
+    //PLIB_PORTS_OpenDrainEnable(PORTS_ID_0, PORT_CHANNEL_B, SYS_PORT_D_ODC);
+    ANSELBbits.ANSB13 = 0;
+    PLIB_PORTS_DirectionInputSet (PORTS_ID_0, PORT_CHANNEL_B, 0x2000); //Makes port 13 an input
     
 }
 
